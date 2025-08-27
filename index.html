@@ -41,7 +41,7 @@
           <button
             class="btn border-none text-[16px] font-black rounded-full px-6 bg-[rgb(65,255,107,10%)] mr-4"
           >
-            <span>0</span>
+            <span id="heart-click-count">0</span>
             <img class="w-[22px]" src="./assets/heart.png" alt="heart" />
           </button>
           <button
@@ -84,7 +84,7 @@
         <div
           class="services-container w-11/12 mx-auto grid grid-cols-12 gap-8 pt-[44px] pb-[90px]"
         >
-          <section class="hotline-info grid col-span-9 grid-cols-3 gap-6">
+          <section id="emergency-hotline-info" class="hotline-info grid col-span-9 grid-cols-3 gap-6">
             <!-- * Service Card 1 -->
             <div class="card-1 bg-[#FFFFFF] shadow p-8 rounded-2xl">
               <div class="flex justify-between items-center">
@@ -466,5 +466,6 @@
         </div>
       </section>
     </main>
+    <script src="./js/script.js"></script>
   </body>
 </html>
