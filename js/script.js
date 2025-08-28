@@ -102,7 +102,6 @@ getElement("#emergency-hotline-info").addEventListener("click", (e) => {
 });
 
 // * Remove Functionalities
-getElement("#history-clear").addEventListener("click", () => {
-  const deleteHistory = getElement("#history-item");
-  deleteHistory.remove();
+getElement("#history-clear").addEventListener("click", (e) => {
+  getElement("#history-item").replaceChildren();
 });
