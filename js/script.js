@@ -30,6 +30,14 @@ const createHistoryDiv = (getTitle, getEmergencyNum) => {
   getElement("#coin-count").innerText = Number(coin) - 20;
 };
 
+// * Create Function for Copy Buttons Functionalities
+const copyFunctionalities = (getEmergencyNum) => {
+  navigator.clipboard.writeText(getEmergencyNum);
+  alert(`${getEmergencyNum} Emergency Hotline Number কপি করা হয়েছে।`);
+  const copyCount = getElement("#copy-count").innerText;
+  getElement("#copy-count").innerText = Number(copyCount) + 1;
+};
+
 // * Add Functionalities
 getElement("#emergency-hotline-info").addEventListener("click", (e) => {
   // * Add Heart Icons Functionalities
@@ -53,12 +61,10 @@ getElement("#emergency-hotline-info").addEventListener("click", (e) => {
       return;
     }
     alert(`${getTitle}  ${getEmergencyNum}`);
-
     createHistoryDiv(getTitle, getEmergencyNum);
   }
 
   // * Add Call Buttons Functionalities for phone Icon
-
   if (e.target.className.includes("fa-phone")) {
     // * Find Title and Emergency HotNumber
     const getTarget = e.target;
@@ -74,13 +80,28 @@ getElement("#emergency-hotline-info").addEventListener("click", (e) => {
       return;
     }
     alert(`${getTitleForIcon}  ${getEmerNumForIcon}`);
-
     createHistoryDiv(getTitleForIcon, getEmerNumForIcon);
+  }
+
+  // * Copy Buttons Functionalities
+  if (e.target.className.includes("copy-btn")) {
+    const getTarget = e.target;
+    const getEmergencyNum =
+      getTarget.parentNode.parentNode.children[2].children[0].innerText;
+    copyFunctionalities(getEmergencyNum);
+  }
+
+  // * Copy Buttons Functionalities For Copy Icon
+  if (e.target.className.includes("fa-copy")) {
+    const getTarget = e.target;
+    const getEmerNumForIcon =
+      getTarget.parentNode.parentNode.parentNode.children[2].children[0]
+        .innerText;
+    copyFunctionalities(getEmerNumForIcon);
   }
 });
 
 // * Remove Functionalities
-
 getElement("#history-clear").addEventListener("click", () => {
   const deleteHistory = getElement("#history-item");
   deleteHistory.remove();
